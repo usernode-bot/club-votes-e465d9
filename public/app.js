@@ -209,12 +209,20 @@
     // Tab counts and the section label above the cards.
     $('[data-count-open]').textContent = data && !data.error ? data.open.length : '';
     $('[data-count-closed]').textContent = data && !data.error ? data.closed.length : '';
-    $('.section-label[data-section-label]').textContent =
-      listTab === 'open' ? 'Waiting on votes' : 'Closed votes';
 
-    // The staging demo line, only on ?demo=1.
-    var demoNote = $('[data-demo-note]');
-    if (demoNote) demoNote.hidden = !demoQs;
+    // The staging demo replaces the app's name in the line above the title.
+    var appLine = $('[data-app-line]');
+    if (appLine) appLine.textContent = demoQs ? 'Staging demo' : 'Club Votes';
+
+    // "Waiting on votes" belongs above cards; not over an empty or failed
+    // list. And the error state's Retry stays the screen's one filled
+    // button, so the header's New decision steps down to secondary.
+    var empty = data && !data.error && data[listTab].length === 0;
+    var label = $('.section-label[data-section-label]');
+    label.textContent = listTab === 'open' ? 'Waiting on votes' : 'Closed votes';
+    label.hidden = !!data && (data.error || empty);
+    var headerBtn = $('[data-new-action]');
+    if (headerBtn) headerBtn.className = data && data.error ? 'btn-secondary' : 'btn-primary';
 
     var flashEl = $('[data-flash]');
     if (!data) {
@@ -332,11 +340,11 @@
     $('#view').hidden = false;
     root.innerHTML = '<div data-spec-screen="1"><div class="cv">'
       + '<div class="bar"><button class="link" data-back>' + BACK_SVG + 'Decisions</button></div>'
-      + '<h1 class="title">New decision</h1>'
-      + '<p class="note">Ask the club something it needs to decide. Everyone votes yes, no or maybe, and you close the vote when it has.</p>'
-      + '<label for="nq">Question</label>'
+      + '<h1 class="title" style="margin:0 4px 4px">New decision</h1>'
+      + '<p class="note" style="margin:0 4px 24px">Ask the club something it needs to decide. Everyone votes yes, no or maybe, and you close the vote when it has.</p>'
+      + '<label for="nq" style="margin:0 4px 6px">Question</label>'
       + '<input id="nq" class="field short" placeholder="e.g. Move the club night to Fridays?">'
-      + '<label for="nd">Details (optional)</label>'
+      + '<label for="nd" style="margin:16px 4px 6px">Details (optional)</label>'
       + '<textarea id="nd" class="field" placeholder="e.g. Anything that helps the club vote, such as costs or times"></textarea>'
       + '<div class="send"><button class="btn-primary" data-post>Post decision</button></div>'
       + '<p class="small" data-new-flash hidden style="color:rgb(var(--danger));margin-top:8px"></p>'

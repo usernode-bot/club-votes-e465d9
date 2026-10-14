@@ -39,7 +39,7 @@
     --on-accent: 255 255 255; /* text on the accent */
     --danger: 185 28 28;
     --on-danger: 255 255 255;
-    --focus: 13 148 136;      /* the keyboard focus ring */
+    --focus: 44 110 73;      /* the keyboard focus ring, the accent */
     --open: 146 84 6; /* from the spec's screens */
     --open-soft: 253 243 220; /* from the spec's screens */
     --no: 150 60 50; /* from the spec's screens */

@@ -9,8 +9,8 @@
    design, such as a map. */
 [data-spec-screen] {
   width: 100%;
-  max-width: 42rem;
-  margin-inline: auto;
+  max-width: 40rem;
+  margin: 0 auto;
 }
 
 .cv {
@@ -18,6 +18,7 @@
   color: rgb(var(--fg));
   min-height: 1080px;
   width: 390px;
+  margin-inline: auto;
   box-sizing: border-box;
   font-family: ui-rounded,system-ui,-apple-system,sans-serif;
   font-size: 16px;
@@ -55,9 +56,9 @@
 
 .badge i {width:6px;height:6px;border-radius:3px;background:rgb(var(--open))}
 
-.q {font-size:20px;line-height:28px;font-weight:600;margin-bottom:12px}
-
-.tally {display:flex;gap:3px;height:14px;margin-bottom:8px}
+/* .cv .q and the like beat the .cv p / .cv h1 resets above (0,1,1), or the
+   drawn margins on the question, title and note never apply. */
+.cv .q {font-size:20px;line-height:28px;font-weight:600;margin-bottom:12px}
 
 .tally span {display:block;height:100%;border-radius:7px}
 
@@ -117,9 +118,9 @@ svg {width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stro
 
 .note {margin:0 4px 20px;color:rgb(var(--muted))}
 
-.card {background:rgb(var(--surface));border:1px solid rgb(var(--line));border-radius:14px;padding:16px;margin-bottom:24px}
+.card {background:rgb(var(--surface));border:1px solid rgb(var(--line));border-radius:14px;padding:16px;margin-bottom:12px}
 
-.tally {display:flex;gap:3px;height:20px;margin-bottom:10px}
+.tally {display:flex;gap:3px;height:20px;margin-bottom:8px}
 
 .tally span {display:block;height:100%;border-radius:10px}
 
@@ -170,4 +171,5 @@ label {display:block;font-size:14px;font-weight:500;margin:0 4px 6px}
 .tappable {cursor:pointer}
 .state {padding:32px 4px;text-align:center}
 .state .q {margin-bottom:4px}
+.state .btn-primary {margin-top:16px}
 .skel {display:inline-block;background:rgb(var(--raised));border:1px solid rgb(var(--line));border-radius:7px;height:14px}
