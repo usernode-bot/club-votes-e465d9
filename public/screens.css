@@ -1,0 +1,156 @@
+/* The screens the spec drew, carried over by the platform before the first
+   version was built (screen 1 is public/index.html's main screen; screen 2,
+   if any, its <template data-spec-screen="2">). Colours are the design kit's
+   tokens, rgb(var(--accent)), so they follow the light and the dark look. */
+
+/* Each screen is one centred column: the phone width it was drawn at grows
+   to a readable column on a wider window, never rows and buttons stretched
+   across the window. Remove this only for an app that fills the window by
+   design, such as a map. */
+[data-spec-screen] {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.cv {
+  background: rgb(var(--ground));
+  color: rgb(var(--fg));
+  min-height: 1080px;
+  width: 390px;
+  box-sizing: border-box;
+  font-family: ui-rounded,system-ui,-apple-system,sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0 16px 32px;
+}
+
+.cv * {box-sizing:border-box}
+
+.cv h1 {font-size:28px;line-height:36px;font-weight:700;margin:0;letter-spacing:-.01em}
+
+.cv p {margin:0}
+
+.top {display:flex;justify-content:space-between;align-items:flex-end;padding:28px 4px 16px}
+
+.small {font-size:14px;line-height:20px}
+
+.muted {color:rgb(var(--muted))}
+
+.btn-primary {display:inline-flex;min-height:44px;min-width:44px;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:0 16px;background:rgb(var(--accent));color:rgb(var(--on-accent));font:500 16px ui-rounded,system-ui,sans-serif;border:0}
+
+.tabs {display:flex;gap:8px;margin:0 0 16px}
+
+.tab {min-height:44px;display:flex;align-items:center;gap:6px;padding:0 14px;border-radius:22px;border:1px solid rgb(var(--line));background:rgb(var(--surface));font-size:14px;font-weight:500}
+
+.tab.on {background:rgb(var(--fg));color:rgb(var(--ground));border-color:rgb(var(--fg))}
+
+.section-label {font-size:14px;line-height:20px;font-weight:500;color:rgb(var(--muted));margin:0 0 8px;padding:0 4px}
+
+.card {display:block;background:rgb(var(--surface));border:1px solid rgb(var(--line));border-radius:14px;padding:16px;margin-bottom:12px}
+
+.meta {display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+.badge {display:inline-flex;align-items:center;gap:6px;font-size:14px;line-height:20px;font-weight:500;color:rgb(var(--open));background:rgb(var(--open-soft));border-radius:10px;padding:0 8px}
+
+.badge i {width:6px;height:6px;border-radius:3px;background:rgb(var(--open))}
+
+.q {font-size:20px;line-height:28px;font-weight:600;margin-bottom:12px}
+
+.tally {display:flex;gap:3px;height:14px;margin-bottom:8px}
+
+.tally span {display:block;height:100%;border-radius:7px}
+
+.y {background:rgb(var(--accent))}
+
+.n {background:rgb(var(--no))}
+
+.m {background:rgb(var(--maybe))}
+
+.e {background:rgb(var(--raised));border:1px solid rgb(var(--line))}
+
+.counts {display:flex;flex-wrap:wrap;gap:4px 14px;font-size:14px;line-height:20px;font-weight:500}
+
+.counts span {display:inline-flex;align-items:center;gap:6px}
+
+.counts i {width:8px;height:8px;border-radius:4px}
+
+.counts b {font-weight:700}
+
+.foot {display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid rgb(var(--line))}
+
+.foot span {display:inline-flex;align-items:center;gap:6px}
+
+svg {width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.mine {color:rgb(var(--accent));font-weight:600}
+
+/* Screen 2: its rules the first screen has not got. */
+
+.cv {
+  background: rgb(var(--ground));
+  color: rgb(var(--fg));
+  min-height: 1240px;
+  width: 390px;
+  box-sizing: border-box;
+  font-family: ui-rounded,system-ui,-apple-system,sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0 16px 32px;
+}
+
+.bar {display:flex;justify-content:space-between;align-items:center;padding:12px 0 8px}
+
+.link {display:inline-flex;align-items:center;gap:4px;min-height:44px;min-width:44px;padding:0 8px;border:0;background:none;color:rgb(var(--fg));font:500 16px ui-rounded,system-ui,sans-serif}
+
+.link.quiet {color:rgb(var(--muted));font-size:14px}
+
+.btn-primary,.btn-secondary {display:inline-flex;min-height:44px;min-width:44px;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:0 16px;font:500 16px ui-rounded,system-ui,sans-serif}
+
+.btn-primary {background:rgb(var(--accent));color:rgb(var(--on-accent));border:0}
+
+.btn-secondary {background:rgb(var(--surface));color:rgb(var(--fg));border:1px solid rgb(var(--line))}
+
+.meta {display:flex;align-items:center;gap:8px;margin:4px 4px 6px}
+
+.title {font-size:28px;line-height:36px;font-weight:700;margin:0 4px 8px;letter-spacing:-.01em}
+
+.note {margin:0 4px 20px;color:rgb(var(--muted))}
+
+.card {background:rgb(var(--surface));border:1px solid rgb(var(--line));border-radius:14px;padding:16px;margin-bottom:24px}
+
+.tally {display:flex;gap:3px;height:20px;margin-bottom:10px}
+
+.tally span {display:block;height:100%;border-radius:10px}
+
+.counts {display:flex;flex-wrap:wrap;gap:4px 14px;font-size:14px;line-height:20px;font-weight:500;margin-bottom:16px}
+
+.seg {display:flex;gap:6px;padding:4px;border-radius:12px;background:rgb(var(--raised));margin-bottom:10px}
+
+.seg button {flex:1;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:9px;background:none;color:rgb(var(--fg));font:500 16px ui-rounded,system-ui,sans-serif}
+
+.seg button.on {background:rgb(var(--surface));box-shadow:0 0 0 2px rgb(var(--no));font-weight:700}
+
+.seg i {width:10px;height:10px;border-radius:5px}
+
+.close {display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;border-top:1px solid rgb(var(--line))}
+
+.list {list-style:none;margin:0 0 16px;padding:0;background:rgb(var(--surface));border:1px solid rgb(var(--line));border-radius:14px;overflow:hidden}
+
+.list-row {display:block;padding:12px 16px;border-top:1px solid rgb(var(--line))}
+
+.list-row:first-child {border-top:0}
+
+.who {display:flex;align-items:center;gap:8px;margin-bottom:2px}
+
+.who b {font-weight:600}
+
+.vote {font-size:14px;line-height:20px;font-weight:500;color:rgb(var(--muted))}
+
+.row-end {display:flex;justify-content:flex-end;margin:-6px -8px -10px 0}
+
+.field {display:block;width:100%;min-height:88px;border-radius:10px;border:1px solid rgb(var(--line));background:rgb(var(--surface));padding:10px 12px;font:16px ui-rounded,system-ui,sans-serif;color:rgb(var(--muted))}
+
+label {display:block;font-size:14px;font-weight:500;margin:0 4px 6px}
+
+.send {display:flex;justify-content:flex-end;margin-top:8px}

@@ -29,17 +29,21 @@
  */
 @layer base {
   :root {
-    --ground: 250 250 249;    /* the page */
+    --ground: 250 249 246;    /* the page */
     --surface: 255 255 255;   /* lists, cards, fields */
-    --raised: 245 245 244;    /* hovers, badges */
+    --raised: 243 241 236;    /* hovers, badges */
     --fg: 28 25 23;           /* text */
     --muted: 87 83 78;        /* secondary text */
-    --line: 231 229 228;      /* borders, dividers, skeletons */
-    --accent: 15 118 110;     /* the one accent */
+    --line: 228 225 218;      /* borders, dividers, skeletons */
+    --accent: 44 110 73;     /* the one accent */
     --on-accent: 255 255 255; /* text on the accent */
     --danger: 185 28 28;
     --on-danger: 255 255 255;
     --focus: 13 148 136;      /* the keyboard focus ring */
+    --open: 146 84 6; /* from the spec's screens */
+    --open-soft: 253 243 220; /* from the spec's screens */
+    --no: 150 60 50; /* from the spec's screens */
+    --maybe: 201 160 70; /* from the spec's screens */
   }
   .dark {
     --ground: 12 10 9;
