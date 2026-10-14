@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <script>
   // usernode-dev-console@1
   (function () {
@@ -26,9 +26,9 @@
             if (seen.has(val)) return '[Circular]';
             seen.add(val);
           }
-          if (typeof val === 'function') return '[Function ' + (val.name || 'anonymous') + ']';
-          if (val instanceof Error) return val.stack || (val.name + ': ' + val.message);
-          return val;
+          if (typeof val === 'function') return '[Function ' + (v.name || 'anonymous') + ']';
+          if (val instanceof Error) return val.stack || (v.name + ': ' + v.message);
+          return v;
         });
       } catch (e) { try { return String(v); } catch (_) { return '[unserializable]'; } }
     }
@@ -64,7 +64,7 @@
   })();
   </script>
   <title>Club Votes</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%237c3aed'/><circle cx='50' cy='50' r='18' fill='white'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c6e49' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 9h14v11H5z'/><path d='M9 9V5h6v4'/><path d='M9 13h6'/></svg>">
   <!-- Tailwind, PRECOMPILED for this app (was cdn.tailwindcss.com's
        in-browser engine plus an inline tailwind.config here). The config
        moved to tailwind.config.js in the repo root; npm run build compiles
@@ -78,6 +78,7 @@
        classes, swap this link for the platform-hosted engine instead:
        <script src="/usernode-tailwind/v1/tailwind.js"></script> -->
   <link rel="stylesheet" href="/tailwind.css">
+  <link rel="stylesheet" href="/screens.css">
   <!-- The platform bridge, centrally hosted and loaded by RELATIVE path (the
        handler in server.js serves it under a plain "node server.js"; the
        platform's edge answers it everywhere else). Never vendor it and never
@@ -115,21 +116,28 @@
   <!-- (Named in prose on purpose: Tailwind compiles any class-name word in
        these files, comments included, and the starter should ship only the
        components its screen uses.) -->
-  <main class="mx-auto flex max-w-md flex-col gap-8 px-4 py-10">
-
-    <!-- usernode-starter-notice@1 — starter-template messaging. When building
-         the user's real app, replace this whole screen and delete this block,
-         both sentinel comments included. -->
-    <section class="card flex flex-col items-start gap-3">
-      <div class="flex h-20 w-20 items-center justify-center rounded-2xl border border-line bg-ground text-title">🗳️</div>
-      <span class="rounded-full bg-raised px-3 py-1 text-small font-medium text-muted">Starter template</span>
-      <h1 class="text-title">Club Votes</h1>
-      <p class="text-body text-muted">Welcome to your new app! Everything on this screen is placeholder content that came with it.</p>
-      <p class="text-body text-muted">To change this app, ask Homeroom bot: tap the <strong class="font-semibold text-fg">Homeroom icon</strong>, then <strong class="font-semibold text-fg">Suggest an improvement</strong>. Describe what you'd like in plain English, and it will be turned into your real app.</p>
-    </section>
-    <!-- /usernode-starter-notice@1 -->
-
-    <p class="text-center text-small text-muted">Built on Homeroom. This template screen disappears once you build your real app.</p>
-  </main>
+  <!-- usernode-spec-screens@1: the screens the spec drew, carried over by the platform as this
+       first version's starting point. Their styles are in public/screens.css.
+       Change them where behaviour needs it; do not redraw them. -->
+  <!-- Screen 1, as drawn: the list. Its values are empty because
+       public/app.js fills them from the API; the cards render into
+       [data-decisions]. -->
+  <div data-spec-screen="1" id="screen-list">
+    <div>
+    <div class="cv">
+    <div class="top"><div><p class="small muted" data-app-line>Club Votes</p><h1>Decisions</h1></div>
+    <button class="btn-primary" data-new-action>New decision</button></div>
+    <div class="tabs"><div class="tab on">Open <span data-count-open></span></div><div class="tab" data-tab-closed>Closed <span data-count-closed></span></div></div>
+    <p class="section-label" data-section-label>Waiting on votes</p>
+    <p class="small" data-flash hidden style="color:rgb(var(--danger));margin:-4px 4px 8px"></p>
+    <div data-decisions></div>
+    </div>
+    </div>
+  </div>
+  <!-- The detail and new screens render here, copied from the spec's drawn
+       screen 2 (its template has moved into public/app.js). -->
+  <div id="view" hidden></div>
+  <!-- /usernode-spec-screens@1 -->
+  <script src="/app.js"></script>
 </body>
 </html>

@@ -1,27 +1,32 @@
 # Club Votes
 
-> **Starter template** — this repo was scaffolded by Homeroom Social
-> Vibecoding. Everything in it is placeholder example code until the
-> app's first real feature is built.
+Your club's place to decide things together. Anyone in the club posts a
+decision (a question, with optional details), everyone votes yes, no or
+maybe, the discussion happens in the comments underneath, and whoever
+posted it closes the vote when the club has decided. Closed votes keep
+their result — passed, did not pass, or tied — in the Closed tab.
 
-The scaffold is a small working demo that proves the plumbing works:
+## How it works
 
-- **Sign-in** — the server verifies the platform-issued user token
-  (an RS256 JWT) on every request, so the app already knows who is
-  using it. No accounts to build.
-- **Database** — the app has its own private Postgres database, ready
-  to store things.
-- **Styling** — Tailwind CSS, precompiled by `npm run build` during
-  image creation with either Kubernetes/Paketo or standalone Docker, in a
-  light and a dark look that follow the viewer's Homeroom theme.
+- One screen of open-decision cards: each shows the live tally bar (a
+  show of hands), the yes/no/maybe counts, how many members haven't
+  voted, whether you've voted, and the comment count. Tap a card for the
+  decision itself.
+- The decision screen has the vote buttons (changeable any time while
+  it's open), the comment thread, and — for whoever posted it — the
+  Close vote action and Delete.
+- Counting is simple yes or no, most wins: more yes than no passes, more
+  no than yes doesn't, and an equal count is a tie. Maybe never counts.
+- Anyone can report someone else's decision or comment; reports go to a
+  private table the group's admins can look at.
 
-## Replacing the template
+## Development
 
-To change this app, ask Homeroom bot: open the app on Homeroom, tap the
-Homeroom icon in the header, then **Suggest an improvement**, and describe
-the app you want in plain English. The template will be replaced with your
-real app. You can also run
-Claude Code against this repo directly; start with `CLAUDE.md`, which
-carries the app-specific notes and points at the platform rules.
+`npm start` runs the server; `npm run build` compiles the Tailwind
+stylesheet. To change the app, ask Homeroom bot (open the app on Homeroom,
+tap the Homeroom icon, then **Suggest an improvement**) or run Claude Code
+against this repo — start with `CLAUDE.md`, which carries the app-specific
+notes and points at the platform rules.
 
-Once the real app exists, rewrite this README to describe it.
+Staging previews show a populated board at `?demo=1`: a sample chess club,
+seeded once per viewer, visible only to them.

@@ -7,5 +7,9 @@
   "governance": {
     "preset": "you_or_the_group"
   },
-  "tests": []
+  "tests": [
+    { "name": "Decisions loads", "path": "/", "expectSelector": "[data-decisions]" },
+    { "id": "demo-board", "name": "Populated demo", "path": "/?demo=1", "expectText": "Staging demo", "visual": true, "impact": ["public/**", "server.js", "styles/**"] },
+    { "name": "Demo tally bars", "path": "/?demo=1", "expectSelector": ".tally" }
+  ]
 }
