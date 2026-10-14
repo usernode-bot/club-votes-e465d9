@@ -154,3 +154,20 @@ svg {width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stro
 label {display:block;font-size:14px;font-weight:500;margin:0 4px 6px}
 
 .send {display:flex;justify-content:flex-end;margin-top:8px}
+
+/* Behaviour the wiring added. Everything above is the spec's drawn screen;
+   these few rules exist because the screens now run on real data:
+   - the seg ring follows the choice's colour (the drawn ring only knew No);
+   - typed field text reads as a value, the placeholder stays faint;
+   - the question field on the new screen is one line tall;
+   - cards in the list open their decision;
+   - the data states (loading, empty, error) drawn in the same shapes. */
+.seg button.on.y {box-shadow:0 0 0 2px rgb(var(--accent))}
+.seg button.on.m {box-shadow:0 0 0 2px rgb(var(--maybe))}
+.field {color:rgb(var(--fg))}
+.field::placeholder {color:rgb(var(--muted));opacity:1}
+.field.short {min-height:44px;height:44px}
+.tappable {cursor:pointer}
+.state {padding:32px 4px;text-align:center}
+.state .q {margin-bottom:4px}
+.skel {display:inline-block;background:rgb(var(--raised));border:1px solid rgb(var(--line));border-radius:7px;height:14px}

@@ -95,24 +95,29 @@ tables you've marked private), etc.
 
 ## About Club Votes
 
-Your club's place to decide things together
-
-_(add a sentence or two more of product context here so Claude Code has a
-shared understanding of what this app is for)_
+Your club's place to decide things together. Anyone posts a decision — a
+question, with optional details — everyone votes yes, no or maybe, and the
+reasoning happens in the comments under it. Whoever posted the decision
+closes the vote when the club has decided; the result (passed, did not
+pass, or tied) stays visible in the Closed tab. Counting is simple most-
+wins: yes against no, maybe never counts.
 
 ## Design
 
 This app's look. The first real version fills in the blanks; every later
 change follows it, and updates it when a request changes the look on purpose.
 
-- **Palette:** _(name the accent, any second colour and the neutrals, e.g.
-  "accent: tomato red; second: basil green; neutrals: warm greys")_
-- **Signature element:** _(the one thing on screen drawn from this app's
-  subject, which no other app would have)_
+- **Palette:** accent: warm green (the "yes" of a show of hands);
+  second colours: clay red for "no", amber for "maybe"; the Open pill is
+  amber on a soft amber chip. Neutrals: warm stone greys, paper white
+  cards on a warm off-white ground.
+- **Signature element:** the live tally bar, drawn like a show of hands —
+  one rounded segment per answer in its answer colour, then the members
+  still to vote as an empty segment, growing as votes land.
 - **Type scale:** `text-title`, `text-heading`, `text-body`, `text-small`
-  _(change their sizes in `tailwind.config.js` if you must, not their number)_
-- **One fixed look:** _(only for an app drawn as its own scene, such as a
-  game: which look, and why. Otherwise delete this line.)_
+  — the drawn screens use `ui-rounded` (the `font-ui` family in
+  `tailwind.config.js`).
+
 
 The kit is in `styles/tailwind-input.css`: colour tokens with a light and
 a dark value (named in `tailwind.config.js`), and a few components
@@ -142,6 +147,15 @@ Re-theme by changing the token values there, keeping every text pair at
 
 ## App-specific conventions
 
-_(optional — e.g. "all currency values stored as integer cents, not
-floats"; "the `posts` table is append-only"; "avoid adding new
-dependencies"; etc.)_
+- The `reports` table is marked `staging:private` (see `server.js`): only
+  the group's admins should see what was reported. It has no foreign keys,
+  by design — a report must survive its target being deleted.
+- Demo data (`?demo=1`, staging only) is seeded once per viewer and keyed
+  by `decisions.demo_for`; real responses never read demo rows. Demo
+  members are fake (`demo-priya` and friends), and the demo member count
+  is a fixed 12.
+- The members roster comes from the platform; if that lookup fails or is
+  refused, the client hides "not voted" and the empty tally segment rather
+  than guessing. Never fake a member count.
+- No new dependencies without need: express, pg and jsonwebtoken cover
+  everything so far.

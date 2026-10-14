@@ -46,17 +46,21 @@
     --maybe: 201 160 70; /* from the spec's screens */
   }
   .dark {
-    --ground: 12 10 9;
-    --surface: 28 25 23;
-    --raised: 41 37 36;
-    --fg: 245 245 244;
-    --muted: 168 162 158;
-    --line: 68 64 60;
-    --accent: 45 212 191;
-    --on-accent: 4 47 46;
-    --danger: 248 113 113;
-    --on-danger: 69 10 10;
-    --focus: 94 234 212;
+    --ground: 20 18 16;
+    --surface: 30 28 25;
+    --raised: 42 39 35;
+    --fg: 245 243 238;
+    --muted: 168 162 154;
+    --line: 64 60 54;
+    --accent: 110 190 140;
+    --on-accent: 12 40 24;
+    --danger: 230 130 115;
+    --on-danger: 40 12 10;
+    --focus: 110 190 140;
+    --open: 240 180 90; /* from the spec's screens */
+    --open-soft: 60 42 14; /* from the spec's screens */
+    --no: 230 130 115; /* from the spec's screens */
+    --maybe: 220 185 100; /* from the spec's screens */
   }
   /* el.hidden = true hides an element even when a class gives it a display
      (flex, the components below). */

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <script>
   // usernode-dev-console@1
   (function () {
@@ -26,9 +26,9 @@
             if (seen.has(val)) return '[Circular]';
             seen.add(val);
           }
-          if (typeof val === 'function') return '[Function ' + (val.name || 'anonymous') + ']';
-          if (val instanceof Error) return val.stack || (val.name + ': ' + val.message);
-          return val;
+          if (typeof val === 'function') return '[Function ' + (v.name || 'anonymous') + ']';
+          if (val instanceof Error) return val.stack || (v.name + ': ' + v.message);
+          return v;
         });
       } catch (e) { try { return String(v); } catch (_) { return '[unserializable]'; } }
     }
@@ -64,7 +64,7 @@
   })();
   </script>
   <title>Club Votes</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%237c3aed'/><circle cx='50' cy='50' r='18' fill='white'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c6e49' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 9h14v11H5z'/><path d='M9 9V5h6v4'/><path d='M9 13h6'/></svg>">
   <!-- Tailwind, PRECOMPILED for this app (was cdn.tailwindcss.com's
        in-browser engine plus an inline tailwind.config here). The config
        moved to tailwind.config.js in the repo root; npm run build compiles
@@ -119,73 +119,26 @@
   <!-- usernode-spec-screens@1: the screens the spec drew, carried over by the platform as this
        first version's starting point. Their styles are in public/screens.css.
        Change them where behaviour needs it; do not redraw them. -->
-  <div data-spec-screen="1">
+  <!-- Screen 1, as drawn: the list. Its values are empty because
+       public/app.js fills them from the API; the cards render into
+       [data-decisions]. -->
+  <div data-spec-screen="1" id="screen-list">
     <div>
     <div class="cv">
     <div class="top"><div><p class="small muted">Club Votes</p><h1>Decisions</h1></div>
-    <button class="btn-primary"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New decision</button></div>
-    <div class="tabs"><div class="tab on">Open <span>4</span></div><div class="tab">Closed <span>6</span></div></div>
-    <p class="section-label">Waiting on votes</p>
-
-    <div class="card"><div class="meta"><span class="badge"><i></i>Open</span><span class="small muted">Priya, 2 days ago</span></div>
-    <p class="q">Move Thursday meetings to the library?</p>
-    <div class="tally"><span class="y" style="flex:7"></span><span class="n" style="flex:2"></span><span class="m" style="flex:1"></span><span class="e" style="flex:2"></span></div>
-    <div class="counts"><span><i class="y"></i><b>7</b> yes</span><span><i class="n"></i><b>2</b> no</span><span><i class="m"></i><b>1</b> maybe</span><span class="muted">2 not voted</span></div>
-    <div class="foot"><span class="small mine"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>You voted yes</span><span class="small muted"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>14 comments</span></div></div>
-
-    <div class="card"><div class="meta"><span class="badge"><i></i>Open</span><span class="small muted">Tom, yesterday</span></div>
-    <p class="q">Buy two new tournament clocks?</p>
-    <div class="tally"><span class="y" style="flex:4"></span><span class="n" style="flex:1"></span><span class="m" style="flex:2"></span><span class="e" style="flex:5"></span></div>
-    <div class="counts"><span><i class="y"></i><b>4</b> yes</span><span><i class="n"></i><b>1</b> no</span><span><i class="m"></i><b>2</b> maybe</span><span class="muted">5 not voted</span></div>
-    <div class="foot"><span class="small muted">You have not voted</span><span class="small muted"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>5 comments</span></div></div>
-
-    <div class="card"><div class="meta"><span class="badge"><i></i>Open</span><span class="small muted">You, 4 hours ago</span></div>
-    <p class="q">Spring social: picnic or pizza night?</p>
-    <div class="tally"><span class="y" style="flex:3"></span><span class="n" style="flex:3"></span><span class="m" style="flex:2"></span><span class="e" style="flex:4"></span></div>
-    <div class="counts"><span><i class="y"></i><b>3</b> yes</span><span><i class="n"></i><b>3</b> no</span><span><i class="m"></i><b>2</b> maybe</span><span class="muted">4 not voted</span></div>
-    <div class="foot"><span class="small mine"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>You voted no</span><span class="small muted"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>9 comments</span></div></div>
-
-    <div class="card"><div class="meta"><span class="badge"><i></i>Open</span><span class="small muted">Ana, 10 minutes ago</span></div>
-    <p class="q">Host a junior open day in May?</p>
-    <div class="tally"><span class="y" style="flex:1"></span><span class="e" style="flex:11"></span></div>
-    <div class="counts"><span><i class="y"></i><b>1</b> yes</span><span><i class="n"></i><b>0</b> no</span><span><i class="m"></i><b>0</b> maybe</span><span class="muted">11 not voted</span></div>
-    <div class="foot"><span class="small muted">You have not voted</span><span class="small muted"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>No comments yet</span></div></div>
+    <button class="btn-primary" data-new-action>New decision</button></div>
+    <div class="tabs"><div class="tab on">Open <span data-count-open></span></div><div class="tab" data-tab-closed>Closed <span data-count-closed></span></div></div>
+    <p class="small muted" data-demo-note hidden style="margin:-8px 4px 12px">Staging demo: a sample club, visible only to you.</p>
+    <p class="section-label" data-section-label>Waiting on votes</p>
+    <p class="small" data-flash hidden style="color:rgb(var(--danger));margin:-4px 4px 8px"></p>
+    <div data-decisions></div>
     </div>
     </div>
   </div>
-  <!-- Screen 2 as the spec drew it: inert until moved where that view belongs. -->
-  <template data-spec-screen="2">
-    <div data-spec-screen="2">
-      <div>
-      <div class="cv">
-      <div class="bar"><button class="link"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Decisions</button><button class="link quiet"><svg viewBox="0 0 24 24"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"/></svg>Delete</button></div>
-      <div class="meta"><span class="badge"><i></i>Open</span><span class="small muted">You, 4 hours ago</span></div>
-      <h1 class="title">Spring social: picnic or pizza night?</h1>
-      <p class="note">Yes means picnic in Elm Park, no means pizza at the club room. Maybe if you would come to either.</p>
-
-      <div class="card">
-      <div class="tally"><span class="y" style="flex:3"></span><span class="n" style="flex:3"></span><span class="m" style="flex:2"></span><span class="e" style="flex:4"></span></div>
-      <div class="counts"><span><i class="y"></i><b>3</b> yes</span><span><i class="n"></i><b>3</b> no</span><span><i class="m"></i><b>2</b> maybe</span><span class="muted">4 not voted</span></div>
-      <p class="small muted" style="margin-bottom:8px">Your vote, change it any time while open</p>
-      <div class="seg"><button><i class="y"></i>Yes</button><button class="on"><i class="n"></i>No</button><button><i class="m"></i>Maybe</button></div>
-      <div class="close"><p class="small muted">You posted this, so you close it when the club has decided.</p><button class="btn-secondary">Close vote</button></div>
-      </div>
-
-      <p class="section-label">9 comments</p>
-      <ul class="list">
-      <li class="list-row"><div class="who"><b>Priya</b><span class="vote">voted yes</span><span class="small muted">3h</span></div><p>The park has covered tables now, so rain is not a problem.</p><div class="row-end"><button class="link quiet">Report</button></div></li>
-      <li class="list-row"><div class="who"><b>Tom</b><span class="vote">voted no</span><span class="small muted">2h</span></div><p>Pizza means we can still run the blitz boards after.</p><div class="row-end"><button class="link quiet">Report</button></div></li>
-      <li class="list-row"><div class="who"><b>Ana</b><span class="vote">voted maybe</span><span class="small muted">1h</span></div><p>Either works for me if it is on a Saturday.</p><div class="row-end"><button class="link quiet">Report</button></div></li>
-      <li class="list-row"><div class="who"><b>You</b><span class="vote">voted no</span><span class="small muted">20m</span></div><p>Could we do the picnic in June instead, when it is warmer?</p><div class="row-end"><button class="link quiet">Delete</button></div></li>
-      </ul>
-
-      <label for="c">Add a comment</label>
-      <textarea id="c" class="field">e.g. I can bring the boards</textarea>
-      <div class="send"><button class="btn-primary">Post comment</button></div>
-      </div>
-      </div>
-    </div>
-  </template>
+  <!-- The detail and new screens render here, copied from the spec's drawn
+       screen 2 (its template has moved into public/app.js). -->
+  <div id="view" hidden></div>
   <!-- /usernode-spec-screens@1 -->
+  <script src="/app.js"></script>
 </body>
 </html>
