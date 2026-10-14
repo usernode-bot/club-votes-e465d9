@@ -215,14 +215,18 @@
     if (appLine) appLine.textContent = demoQs ? 'Staging demo' : 'Club Votes';
 
     // "Waiting on votes" belongs above cards; not over an empty or failed
-    // list. And the error state's Retry stays the screen's one filled
-    // button, so the header's New decision steps down to secondary.
+    // list. The error state's Retry and the Open tab's centred New decision
+    // stay the screen's one filled button, so the header's New decision
+    // steps down to secondary there.
     var empty = data && !data.error && data[listTab].length === 0;
     var label = $('.section-label[data-section-label]');
     label.textContent = listTab === 'open' ? 'Waiting on votes' : 'Closed votes';
     label.hidden = !!data && (data.error || empty);
     var headerBtn = $('[data-new-action]');
-    if (headerBtn) headerBtn.className = data && data.error ? 'btn-secondary' : 'btn-primary';
+    if (headerBtn) {
+      var stepDown = (data && data.error) || (empty && listTab === 'open');
+      headerBtn.className = stepDown ? 'btn-secondary' : 'btn-primary';
+    }
 
     var flashEl = $('[data-flash]');
     if (!data) {
